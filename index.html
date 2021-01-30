@@ -11,48 +11,47 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="module" src="Javascript/main.js"></script>
+    <link rel="stylesheet" href="CSS/CSS.css">
 </head>
 <body>
     <div class="container">
-        <h2 class="text-info text-center mt-5">THỐNG KÊ TÌNH HÌNH DỊCH BỆNH TẠI CÁC NƯỚC TRÊN THẾ GIỚI</h2>
-        <div class="form-group p-2">
-            <input  list="country" id="txtcountry" class="form-control" placeholder="Nhập tên quốc gia">
-            <datalist id="country">
-            </datalist>
-        </div>
-        <div>
-            <table class="table" id="tableThongke">
-                <thead>
-                    <th>Tên nước</th>
-                    <th>Tổng số ca nhiễm</th>
-                    <th>số người bình phục</th>
-                    <th>số ca nhiễm hiện tại</th>
-                    <th>số người chết</th>
-                </thead>
-                <tbody id="bodytable">
-                    
-                </tbody>
-            </table>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <canvas id="myChart1"></canvas>
+        <div class="body-web">
+            <h2 class="text-info text-center mt-5">THỐNG KÊ TÌNH HÌNH DỊCH BỆNH TẠI CÁC NƯỚC TRÊN THẾ GIỚI</h2>
+            <div class="form-group p-2">
+                <input  list="country" id="txtcountry" class="form-control" placeholder="Nhập tên quốc gia">
+                <datalist id="country">
+                </datalist>
             </div>
-            <div class="col-md-4">
-                <div class="form-group" id="btnradio">
-                    <label class="mr-2">
-                        <input type="radio" class="custom-radio" name="ngay" value="7" checked>7Ngày gần đây
-                    </label>
-                    <label >
-                        <input type="radio" class="custom-radio" name="ngay" value="30">1 tháng gần đây
-                    </label>
+            <div>
+                <table class="table" id="tableThongke">
+                    <thead>
+                        <th>Tên nước</th>
+                        <th>Tổng số ca nhiễm</th>
+                        <th>số người bình phục</th>
+                        <th>số ca nhiễm hiện tại</th>
+                        <th>số người chết</th>
+                    </thead>
+                    <tbody id="bodytable">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <canvas id="myChart1" width="100%" height="100px"></canvas>
                 </div>
-                <canvas id="myChart2"></canvas>
+                <div class="col-md-6">
+
+                    <canvas id="myChart2" width="100%" height="100px"></canvas>
+                </div>
             </div>
         </div>
-
+        <div class="footer-web">
+            <h4 class="text-center">DEVELOPERS BY:NGUYỄN TẤN TƯỜNG</h4>
+        </div>
     </div>
 
+    
 
 </body>
 </html>

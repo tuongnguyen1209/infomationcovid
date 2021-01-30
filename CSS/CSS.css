@@ -1,0 +1,9 @@
+div.body-web{
+    min-height: 750px;
+}
+div.footer-web{
+    background-color: black;
+    color: wheat;
+    margin: 15px 0;
+    padding: 5px 0;
+}

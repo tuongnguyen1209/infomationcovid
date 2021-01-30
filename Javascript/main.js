@@ -27,9 +27,9 @@ let drowChars1=(tongso,datas)=>{
 
         // The data for our dataset
         data: {
-            labels: ['số ca bình phục', 'Số ca tử vong', 'số ca nhiễm hiện tại'],
+            labels: ['Số Ca hồi phục', 'Số Ca Tử Vong', 'Số Ca Nhiễm Hiện Tại'],
             datasets: [{
-                label: 'My First dataset',
+                label: '',
                 backgroundColor: ['rgb(40, 167, 69)','rgb(220,53,69)','rgb(0,123,255)'],
                 borderColor: 'rgb(255, 255, 255)',
                 data: datas
@@ -47,7 +47,7 @@ let drowChars1=(tongso,datas)=>{
     
 }
 
-let drowChars2=(lab,datas)=>{
+let drowChars2=(lab,datasMac,dataTu,dataHPhuc)=>{
     let ctx = document.getElementById('myChart2').getContext('2d');
     if(chart2!=null){
         chart2.destroy();
@@ -60,33 +60,55 @@ let drowChars2=(lab,datas)=>{
         data: {
             labels: lab,
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: ['rgb(0,123,255)'],
-                borderColor: 'rgb(255, 255, 255)',
-                data: datas
-            }]
+                label: 'Tổng Số Ca Mắc',
+                borderColor:'rgb(255, 193, 7)',
+                backgroundColor:'#FFF',
+                data: datasMac,
+                fill: false,
+                borderWidth: 1
+                },{
+                    label: 'Tổng Số Ca Tử Vong',
+                    borderColor:'rgb(220,53,69)',
+                    backgroundColor:'#FFF',
+                    data: dataTu,
+                    fill: false,
+                    borderWidth: 1,
+                },{
+                    label: 'Tổng Số Ca Hồi Phục',
+                    borderColor:'rgb(40, 167, 69)',
+                    backgroundColor:'#FFF',
+                    data: dataHPhuc,
+                    fill: false,
+                    borderWidth: 1,
+                }
+            ]
         },
 
         // Configuration options go here
         options: {
             title: {
+                
                 display: true,
-                text: `Biểu Đồ Thể Hiện Tình Hình Dịch Bệnh Của ${$("#txtcountry").val()} (Tổng số ca mắc: ${tongso} ca)`
+                text: `Biểu Đồ Thể Hiện Tình Hình Dịch Bệnh Trong 1 Tháng`
             }
         }
     });
     
 }
-let getDataByDate=(country,datefrom,dateto)=>{
-    getByDate(country,datefrom,dateto).then(lists=>{
+let getDataByDate=(country,datefrom)=>{
+    getByDate(country,datefrom).then(lists=>{
         let lab=[];
-        let datas=[];
+        let datasTong=[];
+        let datasTu=[];
+        let datasHPhuc=[];
         lists.forEach(e=>{
             lab.push(e.Date)
-            datas.push(e.Confirmed)
+            datasTong.push(e.Confirmed)
+            datasTu.push(e.Deaths)
+            datasHPhuc.push(e.Recovered)
         });
-        console.log(lab+" "+datas)
-        drowChars2(lab,datas)
+        
+        drowChars2(lab,datasTong,datasTu,datasHPhuc)
     }).catch(err=>{console.log(err)})
 }
 let loadDataToTable= ()=>{
@@ -107,8 +129,10 @@ let loadDataToTable= ()=>{
                     </tr>`;
                 tBody.innerHTML+=p;
                 drowChars1(element.TotalConfirmed,[element.TotalRecovered,element.TotalDeaths,now]);
-                let date1=new Date();
-                getDataByDate(element.Country,date1.setDate(date1.getDate()-7),date1);
+                
+                let date2=new Date();
+                date2.setDate(date2.getDate()-30)
+                getDataByDate(element.Country,date2.toISOString());
             }
         });
     })
