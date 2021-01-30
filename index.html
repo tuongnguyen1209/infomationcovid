@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="module" src="Javascript/main.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-info text-center mt-5">THỐNG KÊ TÌNH HÌNH DỊCH BỆNH TẠI CÁC NƯỚC TRÊN THẾ GIỚI</h2>
+        <div class="form-group p-2">
+            <input  list="country" id="txtcountry" class="form-control" placeholder="Nhập tên quốc gia">
+            <datalist id="country">
+            </datalist>
+        </div>
+        <div>
+            <table class="table" id="tableThongke">
+                <thead>
+                    <th>Tên nước</th>
+                    <th>Tổng số ca nhiễm</th>
+                    <th>số người bình phục</th>
+                    <th>số ca nhiễm hiện tại</th>
+                    <th>số người chết</th>
+                </thead>
+                <tbody id="bodytable">
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <canvas id="myChart1"></canvas>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group" id="btnradio">
+                    <label class="mr-2">
+                        <input type="radio" class="custom-radio" name="ngay" value="7" checked>7Ngày gần đây
+                    </label>
+                    <label >
+                        <input type="radio" class="custom-radio" name="ngay" value="30">1 tháng gần đây
+                    </label>
+                </div>
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
